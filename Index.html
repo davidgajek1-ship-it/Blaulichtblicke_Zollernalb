@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blaulichtblicke_Zollernalb | Pressefotografie</title>
+    <style>
+        /* Modernes Cyber-Presse-Design mit dynamischen Formen */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', 'Segoe UI', sans-serif; }
+        
+        body { 
+            background-color: #0b0c10; 
+            color: #f1f5f9; 
+            overflow-x: hidden;
+        }
+
+        /* Glühender Hintergrund-Effekt */
+        .glow-bg {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,102,255,0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Header Navigation */
+        header { 
+            background: rgba(15, 23, 42, 0.8); 
+            backdrop-filter: blur(12px);
+            padding: 20px; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo { 
+            font-size: 22px; 
+            font-weight: 900; 
+            color: #fff; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px; 
+        }
+        .logo span { 
+            color: #0077ff; 
+            text-shadow: 0 0 15px rgba(0, 119, 255, 0.6);
+        }
+
+        nav a { color: #94a3b8; text-decoration: none; margin-left: 25px; font-weight: 600; font-size: 14px; text-transform: uppercase; transition: all 0.3s; }
+        nav a:hover, nav a.active { color: #0077ff; }
+
+        /* HERO-SECTION (Das episches Intro mit schrägem Schnitt) */
+        .hero-section {
+            position: relative;
+            padding: 140px 20px 180px 20px;
+            background: linear-gradient(135px, rgba(10,11,16,0.95) 40%, rgba(0,85,255,0.1) 100%), 
+                        url('https://unsplash.com') no-repeat center/cover;
+            clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+            text-align: left;
+        }
+
+        .hero-content { max-width: 1300px; margin: 0 auto; }
+        
+        .badge-live {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            margin-bottom: 20px;
+        }
+        .badge-live::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 10px #ef4444;
+        }
+
+        .hero-section h1 { 
+            font-size: 56px; 
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px; 
+            color: #fff; 
+            letter-spacing: -1px;
+        }
+        .hero-section p { font-size: 18px; color: #94a3b8; max-width: 600px; margin-bottom: 30px; }
+
+        .cta-btn {
+            display: inline-block;
+            background: #0077ff;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px rgba(0, 119, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(0, 119, 255, 0.6); }
+
+        /* DYNAMISCHES CONTENT-LAYOUT (Aufgebrochene Struktur) */
+        .content-container {
+            max-width: 1300px;
+            margin: -60px auto 80px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Drei unregelmäßige Info-Karten */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: #14161e;
+            border: 1px solid rgba(255,255,255,0.03);
+            padding: 40px 30px;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, #0077ff, #00ffcc);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            background: #181b26;
+            border-color: rgba(0, 119, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .feature-card:hover::before { opacity: 1; }
+
+        .card-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .feature-card h3 { font-size: 20px; color: #fff; margin-bottom: 12px; font-weight: 700; }
+        .feature-card p { color: #94a3b8; font-size: 15px; line-height: 1.6; }
+
+        /* Extra Text Sektion mit asymmetrischem Layout */
+        .about-split {
+            margin-top: 100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-text h2 { font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 20px; }
+        .about-text p { color: #94a3b8; font-size: 16px; margin-bottom: 20px; }
+        
+        .about-visual {
+            position: relative;
+            height: 350px;
+            background: linear-gradient(45deg, #0077ff, #0033aa);
+            border-radius: 16px;
+            transform: rotate(-2deg);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+        .about-visual-inner {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://unsplash.com') center/cover;
+            border-radius: 16px;
+            transform: rotate(4deg);
+            transition: transform 0.5s;
+        }
+        .about-split:hover .about-visual-inner {
+            transform: rotate(0deg);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 14px;
+            color: #475569;
+            border-top: 1px solid rgba(255,255,255,0.02);
+        }
+
+        /* Responsive Anpassung für iPads und Handys */
+        @media (max-width: 900px) {
+            .hero-section h1 { font-size: 40px; }
+            .about-split { grid-template-columns: 1fr; gap: 40px; }
+            .about-visual { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Blaulichtblicke<span>_Zollernalb</span></div>
+            <nav>
+                <a href="#home" class="active">Startseite</a>
+                <a href="#galerie">Einsatzgalerie</a>
+                <a href="#kontakt">Kontakt/Presse</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HIER STARTET DIE COOLE STARTSEITE -->
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="badge-live">Pressefotografie</div>
+                <h1>Einsatzdokumentation<br>auf den Punkt gebracht.</h1>
+                <p>Professionelles Bildmaterial und topaktuelle Reportagen von Feuerwehr-, Rettungsdienst- und Polizeieinsätzen im Zollernalbkreis.</p>
+                <a href="#galerie" class="cta-btn">Zur Einsatzgalerie</a>
+            </div>
+        </section>
+
+        <div class="content-container">
+            <div class="features-grid">
+                
+                <div class="feature-card">
+                    <span class="card-icon">📸</span>
+                    <h3>Pressefokus</h3>
+                    <p>Authentische und respektvolle Fotoaufnahmen direkt vom Einsatzgeschehen für digitale Medien und Printredaktionen.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="card-icon">⚡</span>
+                    <h3>Schnelle Bereitstellung</h3>
+                    <p>Im Nachrichtengeschäft zählt jede Minute. Bildmaterial steht registrierten Partnern zeitnah nach Einsatzende zur Verfügung.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="card-icon">📍</span>
+                    <h3>Zollernalb & Umland</h3>
+                    <p>Fester Fokus auf die Region – verlässlich, ortskundig und immer nah am Geschehen dokumentiert.</p>
+                </div>
+
+            </div>
+
+            <div class="about-split">
+                <div class="about-text">
+                    <h2>Über Blaulichtblicke_Zollernalb</h2>
+                    <p>Als freier Pressefotograf dokumentiere ich wichtige Ereignisse und die unermüdliche Arbeit der Blaulicht-Organisationen vor Ort.</p>
+                    <p>Dabei steht der Schutz von Persönlichkeitsrechten und die enge Absprache mit den Einsatzkräften an oberster Stelle.</p>
+                </div>
+                <div class="about-visual">
+                    <div class="about-visual-inner"></div>
